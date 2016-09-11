@@ -1,0 +1,28 @@
+html, body {
+  padding: 0;
+  margin: 0; }
+
+body {
+  font: 10px sans-serif; }
+
+table.show {
+  margin-top: 40px;
+  text-align: center; }
+  table.show td, table.show th {
+    padding: 3px; }
+  table.show td.no-info {
+    background-color: #cccccc; }
+  table.show td.KW37 {
+    background-color: green; }
+  table.show td.KW38 {
+    background-color: yellow; }
+  table.show td.KW39 {
+    background-color: orange; }
+  table.show td.KW40 {
+    background-color: red; }
+  table.show td.KW41 {
+    background-color: #990000; }
+  table.show tr.model_type th:not(:last-child):not(:first-child), table.show tr.model_storage th:not(:last-child):not(:first-child) {
+    border-right: 1px solid #cccccc; }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,41 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font: 10px sans-serif;
+}
+
+table.show {
+  margin-top: 40px;
+  text-align: center;
+  td,th {
+    padding: 3px;
+  }
+  td.no-info {
+    background-color: darken(white, 20%);
+  }
+  td.KW37 {
+    background-color: green;
+  }
+  td.KW38 {
+    background-color: yellow;
+  }
+  td.KW39 {
+    background-color: orange;
+  }
+  td.KW40 {
+    background-color: red;
+  }
+  td.KW41 {
+    background-color: darken(red, 20%);
+  }
+
+  tr.model_type, tr.model_storage {
+    th {
+      &:not(:last-child):not(:first-child){
+        border-right: 1px solid darken(white, 20%);
+      }
+    }
+  }
+}
