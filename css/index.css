@@ -25,4 +25,7 @@ table.show {
   table.show tr.model_type th:not(:last-child):not(:first-child), table.show tr.model_storage th:not(:last-child):not(:first-child) {
     border-right: 1px solid #cccccc; }
 
+.footer {
+  padding-top: 40px; }
+
 /*# sourceMappingURL=index.css.map */
