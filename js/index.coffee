@@ -7,6 +7,8 @@ models = []
 types = [
   'iPhone 7'
   'iPhone 7 Plus'
+  'iPhone 6s'
+  'iPhone 6s Plus'
 ]
 colors = [
   {
@@ -34,6 +36,11 @@ colors = [
     background: '#D0A8A0'
     border: '#aaaaaa'
   }
+  {
+    text: 'Space Grau'
+    background: '#2E3034'
+    border: '#aaaaaa'
+  }
 ]
 storages = [
   {
@@ -50,6 +57,34 @@ storages = [
   }
 ]
 devices =
+  '99924989': #iPhone 6s 32 GB Space Grau
+    type: 3
+    storage: 1
+    color: 6
+  '99924991': #iPhone 6s 32 GB Gold
+    type: 3
+    storage: 1
+    color: 4
+  '99925024': #iPhone 6s 32 GB Roségold
+    type: 3
+    storage: 1
+    color: 5
+  '99925509': #iPhone 6s Plus 32 GB Space Grau
+    type: 4
+    storage: 1
+    color: 6
+  '99925516': #iPhone 6s Plus 32 GB Gold
+    type: 4
+    storage: 1
+    color: 4
+  '99925521': #iPhone 6s Plus 32 GB Silber
+    type: 4
+    storage: 1
+    color: 3
+  '99924988': #iPhone 6s 32 GB Silber
+    type: 3
+    storage: 1
+    color: 3
   '99924964':
     type: 1
     storage: 1
@@ -273,11 +308,14 @@ load_order_date_selector = ->
     $("td.order-date-#{order_date}").css("display", "table-cell")
   $(".order_date_selector").find('li:nth-child(2) a').trigger('click')
 
-process_data = (data)->
+process_data = (data, no_ticket_date_value='')->
   for model, shipping_infos of data
-    models.push(model) unless model in models
+    if devices[model]
+      models.push(model) unless model in models
+    else
+      console.log "Device unknown: #{model}"
     for info in shipping_infos
-      info.ticket_date = info.ticket_date || 'Ohne Ticket'
+      info.ticket_date = info.ticket_date || no_ticket_date_value
       ticket_dates.push(info.ticket_date) unless info.ticket_date in ticket_dates
       order_dates.push(info.order_date) unless info.order_date in order_dates
       database[info.ticket_date] ||= {}
@@ -289,12 +327,16 @@ process_with_ticket = ->
   process_data(data_with_ticket.data)
 
 process_without_ticket = ->
-  process_data(data_without_ticket.data)
+  process_data(data_without_ticket.data, 'Ohne Ticket')
+
+process_magenta1 = ->
+  process_data(data_magenta1.data, 'Magenta 1')
 
 jQuery ($)->
   #Build model
   process_with_ticket()
   process_without_ticket()
+  process_magenta1()
 
   #Sort indizes
   order_dates = order_dates.sort()
