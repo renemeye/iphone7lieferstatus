@@ -432,7 +432,7 @@
   };
 
   process_magenta1 = function() {
-    return process_data(data_magenta1.data, 'Magenta 1');
+    return process_data(data_magenta1.data, '<p style="color: silver; font-size: 10px; line-heigt: 1; padding: 0; margin: 0; font-weight: normal;">Magenta 1 Kunden[1]</p>');
   };
 
   jQuery(function($) {

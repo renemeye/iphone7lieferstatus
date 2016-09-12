@@ -330,7 +330,7 @@ process_without_ticket = ->
   process_data(data_without_ticket.data, 'Ohne Ticket')
 
 process_magenta1 = ->
-  process_data(data_magenta1.data, 'Magenta 1')
+  process_data(data_magenta1.data, '<p style="color: silver; font-size: 10px; line-heigt: 1; padding: 0; margin: 0; font-weight: normal;">Magenta 1 Kunden[1]</p>')
 
 jQuery ($)->
   #Build model
