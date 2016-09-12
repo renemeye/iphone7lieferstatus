@@ -210,7 +210,10 @@ Date::kalenderWoche = ->
 
 nicer_date = (date_string)->
   date = new Date(date_string)
-  "#{pad(date.getDate(), 2)}.#{pad(date.getMonth()+1,2)}"
+  if isNaN( date.getTime())
+    date_string
+  else
+    "#{pad(date.getDate(), 2)}.#{pad(date.getMonth()+1,2)}"
 
 print_header = ->
   $header = $("<tr><th>Premierenticket:</th><th colspan='#{models.length}'>Lieferung in Wochen:</th></tr>")
@@ -270,19 +273,28 @@ load_order_date_selector = ->
     $("td.order-date-#{order_date}").css("display", "table-cell")
   $(".order_date_selector").find('li:nth-child(2) a').trigger('click')
 
-
-
-jQuery ($)->
-  #Build model
-  for model, shipping_infos of data_with_ticket.data
+process_data = (data)->
+  for model, shipping_infos of data
     models.push(model) unless model in models
     for info in shipping_infos
+      info.ticket_date = info.ticket_date || 'Ohne Ticket'
       ticket_dates.push(info.ticket_date) unless info.ticket_date in ticket_dates
       order_dates.push(info.order_date) unless info.order_date in order_dates
       database[info.ticket_date] ||= {}
       database[info.ticket_date][info.order_date] ||= {}
 
       database[info.ticket_date][info.order_date][model] = info.shipping_text
+
+process_with_ticket = ->
+  process_data(data_with_ticket.data)
+
+process_without_ticket = ->
+  process_data(data_without_ticket.data)
+
+jQuery ($)->
+  #Build model
+  process_with_ticket()
+  process_without_ticket()
 
   #Sort indizes
   order_dates = order_dates.sort()
