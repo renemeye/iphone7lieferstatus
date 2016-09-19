@@ -1,9 +1,21 @@
 html, body {
-  padding: 0;
-  margin: 0;
+  @media (min-width: 780px) {
+    padding: 0;
+    margin: 0;
+  }
 }
 body {
   font: 10px sans-serif;
+  background-color: #ECF0F1;
+}
+
+.fork-me {
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  @media (max-width: 730px) {
+    display: none;
+  }
 }
 
 table.show {
@@ -13,22 +25,27 @@ table.show {
     padding: 3px;
   }
   td.no-info {
-    background-color: darken(white, 20%);
+    background-color: #2D3E4F;
+    color: darken(#2D3E4F, 20%);
   }
   td.KW37 {
-    background-color: green;
+    background-color: #3A99D8;
+    color: darken(#3A99D8, 20%);
   }
   td.KW38 {
-    background-color: yellow;
+    background-color: #39C974;
   }
   td.KW39 {
-    background-color: orange;
+    background-color: #F0C330;
   }
   td.KW40 {
-    background-color: red;
+    background-color: #E47E30;
   }
   td.KW41 {
-    background-color: darken(red, 20%);
+    background-color: #E54D42;
+  }
+  td.KW42, td.KW43, td.KW44, td.KW45 {
+    background-color: #BE3A31;
   }
 
   tr.model_type, tr.model_storage {

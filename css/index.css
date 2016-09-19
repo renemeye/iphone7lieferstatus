@@ -1,9 +1,19 @@
-html, body {
-  padding: 0;
-  margin: 0; }
+@media (min-width: 780px) {
+  html, body {
+    padding: 0;
+    margin: 0; } }
 
 body {
-  font: 10px sans-serif; }
+  font: 10px sans-serif;
+  background-color: #ECF0F1; }
+
+.fork-me {
+  position: absolute;
+  right: 0;
+  z-index: -1; }
+  @media (max-width: 730px) {
+    .fork-me {
+      display: none; } }
 
 table.show {
   margin-top: 40px;
@@ -11,17 +21,21 @@ table.show {
   table.show td, table.show th {
     padding: 3px; }
   table.show td.no-info {
-    background-color: #cccccc; }
+    background-color: #2D3E4F;
+    color: #080b0e; }
   table.show td.KW37 {
-    background-color: green; }
+    background-color: #3A99D8;
+    color: #1c6290; }
   table.show td.KW38 {
-    background-color: yellow; }
+    background-color: #39C974; }
   table.show td.KW39 {
-    background-color: orange; }
+    background-color: #F0C330; }
   table.show td.KW40 {
-    background-color: red; }
+    background-color: #E47E30; }
   table.show td.KW41 {
-    background-color: #990000; }
+    background-color: #E54D42; }
+  table.show td.KW42, table.show td.KW43, table.show td.KW44, table.show td.KW45 {
+    background-color: #BE3A31; }
   table.show tr.model_type th:not(:last-child):not(:first-child), table.show tr.model_storage th:not(:last-child):not(:first-child) {
     border-right: 1px solid #cccccc; }
 

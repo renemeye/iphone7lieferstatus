@@ -85,6 +85,10 @@ devices =
     type: 3
     storage: 1
     color: 3
+  '99925511': #iPhone 6s Plus 32 GB Roségold
+    type: 4
+    storage: 1
+    color: 5
   '99924964':
     type: 1
     storage: 1
@@ -261,9 +265,10 @@ prepare_week_table = ->
     for model in models
       for order_date in order_dates
         shipping_in_weeks = "?"
+        shipping_text = ""
         try
           shipping_text = database[ticket_date][order_date][model]
-          shipping_in_weeks = parseInt(shipping_text.replace("KW ","")) - current_kalenderwoche
+          shipping_in_weeks = parseInt(shipping_text.replace("KW","").replace(" ", "")) - current_kalenderwoche
         $row.append("<td class='specific-order-date order-date-#{order_date} #{(shipping_text || "no-info").replace(" ", "")}'>#{shipping_in_weeks}</td>")
     $('table.show').append($row)
 

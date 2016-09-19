@@ -90,6 +90,11 @@
       storage: 1,
       color: 3
     },
+    '99925511': {
+      type: 4,
+      storage: 1,
+      color: 5
+    },
     '99924964': {
       type: 1,
       storage: 1,
@@ -321,9 +326,10 @@
         for (k = 0, len2 = order_dates.length; k < len2; k++) {
           order_date = order_dates[k];
           shipping_in_weeks = "?";
+          shipping_text = "";
           try {
             shipping_text = database[ticket_date][order_date][model];
-            shipping_in_weeks = parseInt(shipping_text.replace("KW ", "")) - current_kalenderwoche;
+            shipping_in_weeks = parseInt(shipping_text.replace("KW", "").replace(" ", "")) - current_kalenderwoche;
           } catch (undefined) {}
           $row.append("<td class='specific-order-date order-date-" + order_date + " " + ((shipping_text || "no-info").replace(" ", "")) + "'>" + shipping_in_weeks + "</td>");
         }
